@@ -26,12 +26,11 @@ def checkReferences(scheme):
     else:
         for ref in refs:
             parsed_ref = ref.split("/")
-            def_key = parsed_ref[len(parsed_ref) - 1]
+            def_key = parsed_ref[- 1]
             def_val = definitions.get(def_key)
 
             if def_val is None:
-                raise Exception(f"No definition {def_key} property in scheme definitions")
-
+                raise Exception(f"No definition for $ref {def_key} in scheme definitions")
 
 
 def patternProperties(validator, patternProperties, instance, schema):
