@@ -9,6 +9,7 @@ def exhaustiveSchemaValidator(schema):
     checkRequiredList(schema)
     checkReferences(schema)
 
+
 def checkRequiredList(scheme):
     required_scheme = scheme.get("required")
     properties_scheme = scheme.get("properties")
