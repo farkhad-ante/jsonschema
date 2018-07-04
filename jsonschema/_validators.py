@@ -5,6 +5,24 @@ from jsonschema.exceptions import FormatError, ValidationError, SchemaError
 from jsonschema.compat import iteritems
 
 
+def exhaustiveSchemaValidator(schema):
+    checkRequiredList(schema)
+    checkReferences(schema)
+
+def checkRequiredList(scheme):
+    required_scheme = scheme.get("required")
+    properties_scheme = scheme.get("properties")
+
+    if required_scheme is not None:
+        if properties_scheme is not None:
+            for required_key in required_scheme:
+                required_val = properties_scheme.get(required_key)
+                if required_val is None:
+                    raise Exception(f"No property for {required_key} in scheme properties")
+        else:
+            raise Exception("No properties in scheme")
+
+
 def checkReferences(scheme):
 
     def getRefs(scheme, refs):

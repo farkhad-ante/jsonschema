@@ -239,7 +239,7 @@ def create(
         @classmethod
         def check_schema(cls, schema):
 
-            _validators.checkReferences(schema)
+            _validators.exhaustiveSchemaValidator(schema)
 
             for error in cls(cls.META_SCHEMA).iter_errors(schema):
                 raise SchemaError.create_from(error)
@@ -306,7 +306,8 @@ def create(
                 raise UnknownType(type, instance, self.schema)
 
         def is_valid(self, instance, _schema=None):
-            _validators.checkReferences(instance)
+            _validators.exhaustiveSchemaValidator(instance)
+
             error = next(self.iter_errors(instance, _schema), None)
             return error is None
 
