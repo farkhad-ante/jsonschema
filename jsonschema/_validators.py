@@ -26,7 +26,7 @@ def checkReferences(scheme):
     else:
         for ref in refs:
             parsed_ref = ref.split("/")
-            def_key = parsed_ref[- 1]
+            def_key = parsed_ref[-1]
             def_val = definitions.get(def_key)
 
             if def_val is None:
