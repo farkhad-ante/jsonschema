@@ -1,8 +1,37 @@
 import re
 
 from jsonschema import _utils
-from jsonschema.exceptions import FormatError, ValidationError
+from jsonschema.exceptions import FormatError, ValidationError, SchemaError
 from jsonschema.compat import iteritems
+
+
+def checkReferences(scheme):
+
+    def getRefs(scheme, refs):
+        for k, v in scheme.items():
+            if k == "$ref" and "definitions" in v:
+                refs.append(v)
+            elif isinstance(v, dict):
+                getRefs(v, refs)
+
+        return refs
+
+    refs = getRefs(scheme, [])
+
+    definitions = scheme.get('definitions')
+
+    if definitions is None:
+        if len(refs) > 0:
+            raise Exception("No definitions property in scheme")
+    else:
+        for ref in refs:
+            parsed_ref = ref.split("/")
+            def_key = parsed_ref[len(parsed_ref) - 1]
+            def_val = definitions.get(def_key)
+
+            if def_val is None:
+                raise Exception(f"No definition {def_key} property in scheme definitions")
+
 
 
 def patternProperties(validator, patternProperties, instance, schema):
