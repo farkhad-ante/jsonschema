@@ -11,15 +11,15 @@ from decimal import Decimal
 import sys
 import unittest
 
-from jsonschema import (
+from jsonschema_extended import (
     FormatError, SchemaError, ValidationError, Draft3Validator,
     Draft4Validator, Draft6Validator, FormatChecker, draft3_format_checker,
     draft4_format_checker, draft6_format_checker, validate,
 )
-from jsonschema.compat import PY3
-from jsonschema.tests.compat import mock
-from jsonschema.tests._suite import Suite
-from jsonschema.validators import create
+from jsonschema_extended.compat import PY3
+from jsonschema_extended.tests.compat import mock
+from jsonschema_extended.tests._suite import Suite
+from jsonschema_extended.validators import create
 
 
 SUITE = Suite()

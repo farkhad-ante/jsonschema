@@ -6,9 +6,9 @@ functions correctly and can facilitate extensions to type checking
 from collections import namedtuple
 from unittest import TestCase
 
-from jsonschema import _types, ValidationError, _validators
-from jsonschema.exceptions import UndefinedTypeCheck
-from jsonschema.validators import Draft4Validator, extend
+from jsonschema_extended import _types, ValidationError, _validators
+from jsonschema_extended.exceptions import UndefinedTypeCheck
+from jsonschema_extended.validators import Draft4Validator, extend
 
 
 def is_int_or_string_int(checker, instance):

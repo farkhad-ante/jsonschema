@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-from jsonschema import Draft4Validator, ValidationError, cli
-from jsonschema.compat import StringIO
-from jsonschema.exceptions import SchemaError
-from jsonschema.tests.compat import mock
+from jsonschema_extended import Draft4Validator, ValidationError, cli
+from jsonschema_extended.compat import StringIO
+from jsonschema_extended.exceptions import SchemaError
+from jsonschema_extended.tests.compat import mock
 
 
 def fake_validator(*errors):

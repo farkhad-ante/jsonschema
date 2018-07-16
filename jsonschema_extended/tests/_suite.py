@@ -14,8 +14,8 @@ from pyrsistent import pmap
 import attr
 
 from jsonschema_extended.compat import PY3
-from jsonschema.validators import validators
-import jsonschema
+from jsonschema_extended.validators import validators
+import jsonschema_extended
 
 
 def _find_suite():

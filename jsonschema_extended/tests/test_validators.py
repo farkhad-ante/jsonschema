@@ -15,7 +15,7 @@ from jsonschema import (
     _types,
     validators,
 )
-from jsonschema.tests.compat import mock
+from jsonschema_extended.tests.compat import mock
 
 
 class TestCreateAndExtend(TestCase):

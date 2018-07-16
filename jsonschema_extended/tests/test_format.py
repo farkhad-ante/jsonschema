@@ -5,9 +5,9 @@ Tests for the parts of jsonschema related to the :validator:`format` property.
 
 from unittest import TestCase
 
-from jsonschema import FormatError, ValidationError, FormatChecker
-from jsonschema.tests.compat import mock
-from jsonschema.validators import Draft4Validator
+from jsonschema_extended import FormatError, ValidationError, FormatChecker
+from jsonschema_extended.tests.compat import mock
+from jsonschema_extended.validators import Draft4Validator
 
 
 class TestFormatChecker(TestCase):
