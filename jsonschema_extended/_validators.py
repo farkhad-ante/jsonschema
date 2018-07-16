@@ -1,8 +1,8 @@
 import re
 
-from jsonschema import _utils
-from jsonschema.exceptions import FormatError, ValidationError, SchemaError
-from jsonschema.compat import iteritems
+from jsonschema_extended import _utils
+from jsonschema_extended.exceptions import FormatError, ValidationError, SchemaError
+from jsonschema_extended.compat import iteritems
 
 
 def exhaustiveSchemaValidator(schema):

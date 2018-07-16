@@ -3,7 +3,7 @@ import json
 import pkgutil
 import re
 
-from jsonschema.compat import str_types, MutableMapping, urlsplit
+from jsonschema_extended.compat import str_types, MutableMapping, urlsplit
 
 
 class URIDict(MutableMapping):
@@ -54,7 +54,7 @@ def load_schema(name):
 
     """
 
-    data = pkgutil.get_data('jsonschema', "schemas/{0}.json".format(name))
+    data = pkgutil.get_data('jsonschema_extended', "schemas/{0}.json".format(name))
     return json.loads(data.decode("utf-8"))
 
 

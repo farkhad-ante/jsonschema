@@ -13,7 +13,7 @@ from bp.filepath import FilePath
 from pyrsistent import pmap
 import attr
 
-from jsonschema.compat import PY3
+from jsonschema_extended.compat import PY3
 from jsonschema.validators import validators
 import jsonschema
 

@@ -7,7 +7,7 @@ JSON-Schema-Test-Suite. It will take some time to complete.
 """
 from perf import Runner
 
-from jsonschema.tests._suite import Suite
+from jsonschema_extended.tests._suite import Suite
 
 
 if __name__ == "__main__":

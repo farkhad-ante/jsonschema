@@ -23,7 +23,7 @@ classifiers = [
 ]
 
 setup(
-    name="jsonschema",
+    name="jsonschema-extended",
     classifiers=classifiers,
     description="An implementation of JSON Schema validation for Python",
     license="MIT",
@@ -34,7 +34,7 @@ setup(
     author_email="Julian@GrayVines.com",
 
     setup_requires=["setuptools_scm"],
-    use_scm_version=True,
+    use_scm_version=False,
 
     install_requires=[
         "attrs>=17.4.0",
@@ -51,8 +51,10 @@ setup(
         ],
     },
 
-    packages=["jsonschema", "jsonschema.tests"],
-    package_data={"jsonschema": ["schemas/*.json"]},
+    version=0.4,
 
-    entry_points={"console_scripts": ["jsonschema = jsonschema.cli:main"]},
+    packages=["jsonschema_extended", "jsonschema_extended.tests"],
+    package_data={"jsonschema_extended": ["schemas/*.json"]},
+
+    entry_points={"console_scripts": ["jsonschema_extended = jsonschema_extended.cli:main"]},
 )

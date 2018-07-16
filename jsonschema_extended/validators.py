@@ -7,12 +7,12 @@ import numbers
 
 from six import add_metaclass
 
-from jsonschema import _utils, _validators, _types
-from jsonschema.compat import (
+from jsonschema_extended import _utils, _validators, _types
+from jsonschema_extended.compat import (
     Sequence, urljoin, urlsplit, urldefrag, unquote, urlopen,
     str_types, int_types, iteritems, lru_cache,
 )
-from jsonschema.exceptions import (
+from jsonschema_extended.exceptions import (
     RefResolutionError,
     SchemaError,
     UnknownType,
@@ -23,7 +23,7 @@ from jsonschema.exceptions import (
 # Sigh. https://gitlab.com/pycqa/flake8/issues/280
 #       https://github.com/pyga/ebb-lint/issues/7
 # Imported for backwards compatibility.
-from jsonschema.exceptions import ErrorTree
+from jsonschema_extended.exceptions import ErrorTree
 ErrorTree
 
 
