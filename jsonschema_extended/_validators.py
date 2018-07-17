@@ -6,22 +6,27 @@ from jsonschema_extended.compat import iteritems
 
 
 def exhaustiveSchemaValidator(schema):
-    checkRequiredList(schema)
-    checkReferences(schema)
+    error = checkRequiredList(schema)
+    if error is not None:
+        yield error
+
+    error = checkReferences(schema)
+    if error is not None:
+        yield error
 
 
-def checkRequiredList(scheme):
-    required_scheme = scheme.get("required")
-    properties_scheme = scheme.get("properties")
+def checkRequiredList(schema):
+    required_scheme = schema.get("required")
+    properties_scheme = schema.get("properties")
 
     if required_scheme is not None:
         if properties_scheme is not None:
             for required_key in required_scheme:
                 required_val = properties_scheme.get(required_key)
                 if required_val is None:
-                    raise Exception(f"No property for {required_key} in scheme properties")
+                    return ValidationError(f"No property for {required_key} in scheme properties")
         else:
-            raise Exception("No properties in scheme")
+            return ValidationError("No properties in scheme")
 
 
 def checkReferences(scheme):
@@ -41,7 +46,7 @@ def checkReferences(scheme):
 
     if definitions is None:
         if len(refs) > 0:
-            raise Exception("No definitions property in scheme")
+            return ValidationError("No definitions property in scheme")
     else:
         for ref in refs:
             parsed_ref = ref.split("/")
@@ -49,7 +54,7 @@ def checkReferences(scheme):
             def_val = definitions.get(def_key)
 
             if def_val is None:
-                raise Exception(f"No definition for $ref {def_key} in scheme definitions")
+                return ValidationError(f"No definition for $ref {def_key} in scheme definitions")
 
 
 def patternProperties(validator, patternProperties, instance, schema):

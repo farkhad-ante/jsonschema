@@ -13,3 +13,4 @@ test.py
 .eggs/
 dist/
 jsonschema_extended.egg-info/
+__pycache__/

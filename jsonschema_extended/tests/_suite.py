@@ -23,7 +23,7 @@ def _find_suite():
     if root is not None:
         return FilePath(root)
 
-    root = FilePath(jsonschema.__file__).parent().sibling("json")
+    root = FilePath(jsonschema_extended.__file__).parent().sibling("json")
     if not root.isdir():
         raise ValueError(
             (
@@ -172,17 +172,17 @@ class _Test(object):
                 self.validate()
         else:
             def fn(this):
-                with this.assertRaises(jsonschema.ValidationError):
+                with this.assertRaises(jsonschema_extended.ValidationError):
                     self.validate()
 
         fn.__name__ = name
         return fn
 
     def validate(self):
-        resolver = jsonschema.RefResolver.from_schema(
+        resolver = jsonschema_extended.RefResolver.from_schema(
             schema=self.schema, store=self._remotes,
         )
-        jsonschema.validate(
+        jsonschema_extended.validate(
             instance=self.data,
             schema=self.schema,
             cls=self.collection.validator,
@@ -193,7 +193,7 @@ class _Test(object):
     def validate_ignoring_errors(self):
         try:
             self.validate()
-        except jsonschema.ValidationError:
+        except jsonschema_extended.ValidationError:
             pass
 
     def with_validate_kwargs(self, **kwargs):

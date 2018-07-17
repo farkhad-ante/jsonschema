@@ -51,7 +51,7 @@ setup(
         ],
     },
 
-    version=0.4,
+    version=0.6,
 
     packages=["jsonschema_extended", "jsonschema_extended.tests"],
     package_data={"jsonschema_extended": ["schemas/*.json"]},
